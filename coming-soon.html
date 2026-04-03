@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Humanity Calls | Coming Soon</title>
+    <meta
+      name="description"
+      content="Humanity Calls is launching soon. Join us in making a difference."
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-glow: rgba(79, 70, 229, 0.5);
+        --bg-dark: #020617; /* Even deeper navy */
+        --bg-card: rgba(15, 23, 42, 0.6);
+        --text-main: #f8fafc;
+        --text-dim: #94a3b8;
+        --glass-border: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Ambient Background Elements */
+      .ambient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(79, 70, 229, 0.12) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(139, 92, 246, 0.08) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(15, 23, 42, 1) 0%,
+            transparent 100%
+          );
+      }
+
+      /* Animated Mesh Gradient */
+      .mesh {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        opacity: 0.5;
+        filter: blur(80px);
+        animation: meshMove 20s infinite alternate;
+      }
+
+      @keyframes meshMove {
+        0% {
+          transform: translate(-5%, -5%) rotate(0deg);
+        }
+        100% {
+          transform: translate(5%, 5%) rotate(5deg);
+        }
+      }
+
+      /* Main Container */
+      .container {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 800px;
+        padding: 3rem;
+        text-align: center;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      /* Logo Styles */
+      .logo-container {
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-wrapper {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px var(--primary-glow);
+      }
+
+      .logo-text {
+        font-size: 1.75rem;
+        font-weight: 700;
+        padding-top: 10px;
+        letter-spacing: -0.02em;
+        background: linear-gradient(to bottom, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.04em;
+        background: linear-gradient(
+          to bottom,
+          #ffffff 40%,
+          rgba(255, 255, 255, 0.4)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        font-size: 1.25rem;
+        color: var(--text-dim);
+        margin-bottom: 3.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      /* Countdown Grid */
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+      }
+
+      .count-item {
+        background: var(--bg-card);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        padding: 1.5rem;
+        border-radius: 24px;
+        min-width: 110px;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .count-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .count-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #fff;
+        display: block;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .count-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--text-dim);
+        font-weight: 600;
+      }
+
+      /* Social Icons */
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        margin-top: 1rem;
+      }
+
+      .social-link {
+        color: var(--text-dim);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .social-link:hover {
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      .social-link i {
+        opacity: 0.7;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Decorative Bubbles */
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--primary);
+        filter: blur(80px);
+        opacity: 0.08;
+        z-index: -1;
+      }
+
+      .bubble-1 {
+        width: 500px;
+        height: 500px;
+        top: -200px;
+        left: -100px;
+      }
+      .bubble-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -100px;
+        right: -100px;
+        background: #8b5cf6;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1.5rem;
+        }
+        .countdown {
+          gap: 0.75rem;
+        }
+        .count-item {
+          min-width: 80px;
+          padding: 1rem;
+          border-radius: 16px;
+        }
+        .count-value {
+          font-size: 1.75rem;
+        }
+        .count-label {
+          font-size: 0.6rem;
+        }
+        h1 {
+          font-size: 2.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ambient-bg"></div>
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+
+    <div class="container">
+      <div class="logo-container">
+        <div class="logo-wrapper">
+          <!-- Using Lucide Heart Icon via CDN -->
+          <img
+            src="https://res.cloudinary.com/dcwdpqied/image/upload/v1772464253/humanity_calls_assets/watermark_logo_new.png"
+            alt=""
+          />
+        </div>
+        <div class="logo-text">Humanity Calls</div>
+      </div>
+
+      <h1>Something meaningful is on the way.</h1>
+      <p>
+        Connecting compassion with community. We are refining our platform to
+        better serve humanity. Stay tuned for our global launch.
+      </p>
+
+      <div class="countdown" id="countdown">
+        <div class="count-item">
+          <span class="count-value" id="days">00</span>
+          <span class="count-label">Days</span>
+        </div>
+        <div class="count-item">
+          <span class="count-value" id="hours">00</span>
+          <span class="count-label">Hours</span>
+        </div>
+        <div class="count-item">
+          <span class="count-value" id="minutes">00</span>
+          <span class="count-label">Mins</span>
+        </div>
+        <div class="count-item">
+          <span class="count-value" id="seconds">00</span>
+          <span class="count-label">Secs</span>
+        </div>
+      </div>
+
+      <div class="socials">
+        <a href="#" class="social-link">
+          <i data-lucide="twitter" size="18"></i> Twitter
+        </a>
+        <a href="#" class="social-link">
+          <i data-lucide="linkedin" size="18"></i> LinkedIn
+        </a>
+        <a href="#" class="social-link">
+          <i data-lucide="instagram" size="18"></i> Instagram
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Set launch date to 30 days from now
+      const launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 30);
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (3000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").innerText = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").innerText = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").innerText = seconds
+          .toString()
+          .padStart(2, "0");
+
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").innerHTML =
+            "<div class='count-item' style='width: 100%; border-color: var(--primary);'>WELCOME TO HUMANITY CALLS</div>";
+        }
+      }
+
+      const countdownInterval = setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>
